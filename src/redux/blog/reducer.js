@@ -1,4 +1,4 @@
-import { LIKED, UNLIKED } from "./actionType";
+import { LIKED, UNLIKED } from "./actionTypes";
 import initialState from "./initialState";
 
 const reducer = (state = initialState, action) => {
