@@ -18,6 +18,16 @@ const Blogs = () => {
             return false;
           }
         })
+        .filter((blog) => {
+          const { author } = filter;
+          if (author === "") {
+            return true;
+          } else if (author === blog.author) {
+            return true;
+          } else {
+            return false;
+          }
+        })
         .map((blog) => (
           <Blog key={blog.id} blog={blog} />
         ))}

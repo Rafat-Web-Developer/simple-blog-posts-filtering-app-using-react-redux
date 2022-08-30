@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { filteredByCategory } from "../redux/filter/actions";
+import { filteredByAuthor, filteredByCategory } from "../redux/filter/actions";
 
 const Blog = ({ blog }) => {
   const dispatch = useDispatch();
@@ -8,6 +8,10 @@ const Blog = ({ blog }) => {
 
   const handleCategorySearch = (searchCategory) => {
     dispatch(filteredByCategory(searchCategory));
+  };
+
+  const handleAuthorSearch = (searchAuthor) => {
+    dispatch(filteredByAuthor(searchAuthor));
   };
 
   return (
@@ -25,16 +29,23 @@ const Blog = ({ blog }) => {
               {category}
             </span>
           </p>
-          <a href='#' className='block mt-1'>
+          <div className='block mt-1'>
             <p className='text-xl font-semibold text-gray-900'>{title}</p>
-          </a>
+          </div>
         </div>
         <div className='mt-6 flex items-center'>
           <div className='flex-shrink-0'>
-            <img className='h-10 w-10 rounded-full' src={author_img} alt='' />
+            <img
+              className='h-10 w-10 rounded-full cursor-pointer'
+              src={author_img}
+              alt=''
+              onClick={() => handleAuthorSearch(author)}
+            />
           </div>
           <div className='ml-3'>
-            <p className='text-sm font-medium text-gray-900 hover:underline'>
+            <p
+              className='text-sm font-medium text-gray-900 hover:underline cursor-pointer'
+              onClick={() => handleAuthorSearch(author)}>
               {author}
             </p>
             <div className='flex space-x-1 text-sm text-gray-500'>
