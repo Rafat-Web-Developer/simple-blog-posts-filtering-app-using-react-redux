@@ -9,7 +9,7 @@ const reducer = (state = initialState, action) => {
       break;
 
     default:
-      break;
+      return state;
   }
 };
 export default reducer;
