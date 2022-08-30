@@ -9,6 +9,18 @@ const Blogs = () => {
     <div className='mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none'>
       {blogs
         .filter((blog) => {
+          const { searchText } = filter;
+          if (searchText === "") {
+            return true;
+          } else if (
+            blog.title.toLowerCase().includes(searchText.toLowerCase())
+          ) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+        .filter((blog) => {
           const { category } = filter;
           if (category === "") {
             return true;
